@@ -8,15 +8,16 @@ class BoomtownUser(HttpUser):
 
 	def on_start(self):
 		self.client.headers = {
-			'Origin': search_api,
-			'X-Boomtown-Key': '4dZ8mxjtkdLW3KLZJdaP5uHWtjk4eLrBDnLJB2hA6EUS',
-			'X-Boomtown-Integration': 'MF49ER'	
+			'X-Boomtown-Key': 'f7LrK5AfEfVyX8vmClqtrtYGCzrcUBk8CYVU2PMzfNm5',
+			'X-Boomtown-Integration': 'TBYS9Q'	
 		}
+		
 		r = self.client.get(self.search_api)
-
-		print(r.cookies)
 
 	@task
 	def search(self):
-		with self.client.get(self.search_api + self.search_query, catch_response=True, body={'X-Boomtown-Key': '4dZ8mxjtkdLW3KLZJdaP5uHWtjk4eLrBDnLJB2hA6EUS','X-Boomtown-Integration': 'MF49ER'}) as response:
-			print(response.text)
+		with self.client.get(self.search_api + self.search_query, catch_response=True) as response:
+			rJson = response.json()
+			print(rJson)
+			assert rJson['success'] is True
+			
