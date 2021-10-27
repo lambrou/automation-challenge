@@ -8,8 +8,6 @@
 
 `> cd automation-challenge`
 
-`> npm init`
-
 #### Install requirements
 `> npm install cypress`
 
@@ -24,3 +22,5 @@ Run functional.spec.js
 `> cd locust`
 
 `> locust`
+
+You can view the locust tests at http://0.0.0.0:8089
